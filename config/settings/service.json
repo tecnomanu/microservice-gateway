@@ -1,8 +1,8 @@
 {
     "port": 8080,
     "default_hosts": [
-        "_authentication:3300",
-        "_user:3301"
+        "_authentication:3123",
+        "_user:3123"
     ],
     "extra_config": {
       "security/http": {
