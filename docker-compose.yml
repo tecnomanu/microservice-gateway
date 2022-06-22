@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  dev:
+    container_name: ${APP_NAME}_gateway
+    build:
+      context: .
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - ${PORT}:8080
+    volumes:
+      - .:/etc/krakend
+    command: run -c krakend-compiled.json 
+    image: 'krakend:watch'
+    restart: unless-stopped
+    networks:
+      - microservice
+
+  prod:
+    container_name: ${APP_NAME}_gateway
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - APP_NAME=${APP_NAME}
+    ports:
+      - ${PORT}:8080
+    command: run -c /etc/krakend/krakend.json 
+    image: 'krakend:latest'
+    restart: unless-stopped
+    networks:
+      - microservice
+
+networks:
+    microservice:
+        name: microservice-network
+        external: true

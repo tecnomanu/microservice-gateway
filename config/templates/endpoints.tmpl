@@ -1,0 +1,19 @@
+{{ range $idx, $endpoint := . }}
+{{if $idx}},{{end}}
+{
+    "endpoint": "{{ $endpoint.endpoint }}",
+    "method": "{{ $endpoint.method }}",
+    "input_headers":["*"],
+    "output_encoding": "{{ $endpoint.output_encoding }}",
+    "backend": [
+        {
+            "url_pattern": "{{ $endpoint.backend }}",
+            "encoding": "json",
+            "sd": "static",
+            "method": "{{ $endpoint.method }}",
+            "host" : ["{{ env "APP_NAME"}}_{{ $endpoint.host }}"],
+            "disable_host_sanitize": false
+        }
+    ]
+}
+{{end}}

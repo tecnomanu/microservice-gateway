@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "name": "Microservice Incubit - API Gateway",
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "output_encoding": "json",
+  "port": {{ .service.port }},
+  "host": {{ template "default_hosts.tmpl" }},
+  "extra_config" : {{ marshal .service.extra_config }},
+  "endpoints": [
+    {{ template "endpoints.tmpl" .auth.endpoints}}
+  ]
+}
