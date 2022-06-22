@@ -1,26 +1,24 @@
-POST http://localhost:9595/v1/auth/login HTTP/1.1
-Content-Type: application/json
-
-{
-    "username" : "asdas",
-    "email" : "pedro@perez.com",
-    "password" : "12345678"
-}
-
-###
-
+### Create new user
 POST http://localhost:9595/v1/auth/signup HTTP/1.1
 Content-Type: application/json
 
 {
     "password" : "12345678",
     "password_confirmation" : "12345678",
-    "firstName": "Pedro",
-    "email" : "pedro@perez.com"
+    "firstName": "John",
+    "email" : "user@test.com"
 }
 
-###
+### Login route
+POST http://localhost:9595/v1/auth/login HTTP/1.1
+Content-Type: application/json
 
+{
+    "email" : "user@test.com",
+    "password" : "12345678"
+}
+
+### Test Token
 GET http://localhost:9595/v1/greet HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozLCJmaXJzdE5hbWUiOiJQZWRybyIsImxhc3ROYW1lIjpudWxsLCJlbWFpbCI6InBlZHJvQHBlcmV6LmNvbSIsInNhbHQiOiIkMmIkMTAkZkV2amVGSWRLaDBHakp0aGN5ZHR3TyIsImNyZWF0ZWRBdCI6IjIwMjItMDYtMjBUMjE6MDk6MTguODcyWiIsInZlcmlmaWVkQXQiOiIyMDIyLTA2LTIwVDIxOjA5OjE4Ljg3MloiLCJjcmVhdGVBdCI6IjIwMjItMDYtMjBUMjE6MDk6MTguODcyWiIsInVwZGF0ZUF0IjoiMjAyMi0wNi0yMFQyMTowOToxOC44NzJaIn0sInN1YiI6MywiaWF0IjoxNjU1ODIzMDE1LCJleHAiOjE2NTU4MjY2MTV9.B8VgWaq6g8digcNoBBAypIuy3h_0U2pSGnXt5DbmsIA
+Authorization: Bearer YOURTOKEN
